@@ -2,11 +2,11 @@ import SearchTask from "./SearchTask";
 import TaskActions from "./TaskActions";
 import TaskItem from "./TaskItem";
 
-const TaskTable = ({ tasks }) => {
+const TaskTable = ({ tasks, handleShowModal, onEdit, onDelete }) => {
   return (
     <>
       <SearchTask />
-      <TaskActions />
+      <TaskActions handleShowModal={handleShowModal} />
       <div className="overflow-x-auto">
         <table className="min-w-full table-auto">
           <thead>
@@ -16,7 +16,7 @@ const TaskTable = ({ tasks }) => {
                 {" "}
                 Title{" "}
               </th>
-              <th className="p-4 pb-4 text-sm font-semibold capitalize text-gray-300 w-full text-left">
+              <th className="p-4 pb-4 text-sm font-semibold capitalize text-gray-300 w-[300px] text-left">
                 {" "}
                 Description{" "}
               </th>
@@ -36,7 +36,12 @@ const TaskTable = ({ tasks }) => {
           </thead>
           <tbody>
             {tasks.map((task) => (
-              <TaskItem key={task.id} task={task} />
+              <TaskItem
+                onDelete={onDelete}
+                onEdit={onEdit}
+                key={task.id}
+                task={task}
+              />
             ))}
           </tbody>
         </table>

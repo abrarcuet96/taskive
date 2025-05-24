@@ -1,4 +1,4 @@
-const TaskItem = ({ task }) => {
+const TaskItem = ({ task, onEdit, onDelete }) => {
   const { title, description, tags, priority, isFavorite } = task;
 
   const priorityClasses = {
@@ -43,7 +43,7 @@ const TaskItem = ({ task }) => {
           </svg>
         )}
       </td>
-      <td className="font-semibold text-lg">{title}</td>
+      <td className="font-semibold text-sm">{title}</td>
       <td className="text-gray-400">{description}</td>
       <td>
         <ul className="flex justify-center gap-2 flex-wrap">
@@ -71,10 +71,16 @@ const TaskItem = ({ task }) => {
       </td>
       <td>
         <div className="flex items-center justify-center space-x-3">
-          <button className="text-red-400 hover:text-red-500 transition-colors duration-200">
+          <button
+            onClick={() => onDelete(task.id)}
+            className="text-red-400 hover:text-red-500 transition-colors duration-200"
+          >
             Delete
           </button>
-          <button className="text-blue-400 hover:text-blue-500 transition-colors duration-200">
+          <button
+            onClick={() => onEdit(task)}
+            className="text-blue-400 hover:text-blue-500 transition-colors duration-200"
+          >
             Edit
           </button>
         </div>

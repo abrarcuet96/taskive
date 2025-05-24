@@ -1,6 +1,6 @@
 const SearchTask = () => {
   return (
-    <div className="p-2 flex justify-end">
+    <div className="mb-8 flex justify-end">
       <form>
         <div className="flex">
           <div className="relative overflow-hidden rounded-lg text-gray-300 min-w-[280px] md:min-w-[380px] lg:min-w-[440px]">
