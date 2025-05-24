@@ -83,6 +83,22 @@ function App() {
     const tasksAfterDelete = tasks.filter((task) => task.id !== taskId);
     setTasks(tasksAfterDelete);
   };
+  const handleDeleteAllClick = () => {
+    tasks.length = 0;
+    setTasks([...tasks]);
+  };
+  const handleFavorite = (taskId) => {
+    const taskIndex = tasks.findIndex((task) => task.id === taskId);
+    const newTasks = [...tasks];
+    newTasks[taskIndex].isFavorite = !newTasks[taskIndex].isFavorite;
+    setTasks(newTasks);
+  };
+  const handleSearch = (searchTerm) => {
+    const filtered = tasks.filter((task) =>
+      task.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setTasks([...filtered]);
+  };
   return (
     <div className="bg-gray-900 min-h-screen font-sans text-white">
       <Header />
@@ -103,6 +119,9 @@ function App() {
                 handleShowModal={() => setShowAddModal(true)}
                 onEdit={handleEditTask}
                 onDelete={handleDeleteTask}
+                onDeleteAllClick={handleDeleteAllClick}
+                onFav={handleFavorite}
+                onSearch={handleSearch}
               />
             </div>
           </div>

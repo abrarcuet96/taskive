@@ -1,4 +1,4 @@
-const TaskActions = ({ handleShowModal }) => {
+const TaskActions = ({ handleShowModal, onDeleteAllClick }) => {
   return (
     <div className="mb-8 flex flex-col sm:flex-row items-center justify-between gap-4">
       <h2 className="text-3xl font-bold text-gray-200">Your Tasks</h2>
@@ -9,7 +9,10 @@ const TaskActions = ({ handleShowModal }) => {
         >
           Add Task
         </button>
-        <button className="rounded-lg bg-red-600 px-5 py-2.5 text-base font-semibold hover:bg-red-700 transition-colors duration-200">
+        <button
+          onClick={onDeleteAllClick}
+          className="rounded-lg bg-red-600 px-5 py-2.5 text-base font-semibold hover:bg-red-700 transition-colors duration-200"
+        >
           Delete All
         </button>
       </div>
